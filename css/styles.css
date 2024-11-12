@@ -231,6 +231,77 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 20px 0px 20px 20px; /* Define o raio de borda para cada canto */
 }
 
+
+/* PROGRESS BAR */
+
+.progresso-cadastro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.barra-cinza{
+    background-color: #ECECEC;
+    width: 100%;
+    height: 24px;
+    margin-left: -2px;
+}
+.barra-vermelha{
+    background-color: #F82167;
+    width: 100%;
+    height: 24px;
+    margin-left: -2px;
+}
+.circulo-etapa-v{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -2px;
+}
+.circulo-etapa-v > a{
+    background-color: #F82167;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 15px 20px;
+    z-index: 1;
+}
+.circulo-etapa-v > a:hover{
+    background-color: #fc80a9;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 15px 20px;
+}
+.circulo-etapa-c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -2px;
+}
+.circulo-etapa-c > a{
+    background-color: #ECECEC;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 15px 20px;
+    z-index: 1;
+}
+.circulo-etapa-c > a:hover{
+    background-color: #cfcccc;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 15px 20px;
+    
+}
+
+
 @media (max-width: 768px) {
     .img-mobile-app-exemple {
         display:none ;

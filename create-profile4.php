@@ -40,7 +40,7 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Login | Avesso</title>
+    <title>Perfil | Avesso</title>
 </head>
 
 <body>
@@ -51,21 +51,37 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
             <div>
                 <div class="flex column text-center mb-4">
                     <img class="col-2" src="img/Logo.png" alt="Avesso">
-                    <hr class="col-9 m-auto mt-4 mb-4">
-                    <h2 class="size-20 text-primary">Seja bem vindo(a) ao Avesso!</h2>
-                    <p class="size-16">
-                        Conheça novas pessoas e descubra quem está por trás da tela. Não julgue um
-                        livro pela capa!
-                    </p>
-                    <img class="col-4" src="img/Characters.png" alt="Avesso">
+                </div>
+            </div>
+
+            <div class="progresso-cadastro mb-4">
+                <div class="circulo-etapa-v"><a href="create-profile1.php">1</a></div>
+                <div class="barra-vermelha"></div>
+                <div class="circulo-etapa-v"><a href="create-profile2.php">2</a></div>
+                <div class="barra-vermelha"></div>
+                <div class="circulo-etapa-v"><a href="create-profile3.php">3</a></div>
+                <div class="barra-vermelha"></div>
+                <div class="circulo-etapa-v"><a href="create-profile4.php">4</a></div>
+            </div>
+
+            <p class="size-16">
+                Adicione uma <span class="text-primary">foto</span> para seu perfil
+            </p>
+
+
+
+
+            <div>
+                <div class="flex column text-center mb-4">
                     
                 </div>
             </div>
-            <div class="border-light border-top border-3 p-4 container d-flex align-items-center justify-content-center">
-                <a class="text-primary" href="welcome2.php">Próximo <i class="bi bi-arrow-right"></i></a>
+            <div
+                class="border-light border-top border-3 p-4 container d-flex align-items-center justify-content-center">
+                <a class="text-primary" href="index.php">Finalizar <i class="bi bi-arrow-right"></i></a>
             </div>
 
-        </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

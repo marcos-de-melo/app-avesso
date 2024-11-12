@@ -40,29 +40,27 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Login | Avesso</title>
+    <title>Bem vindo ao Avesso | Avesso</title>
 </head>
 
 <body>
 
     <div class="container">
         <div class="column vh-100 align-items-center justify-content-center">
-
             <div>
                 <div class="flex column text-center mb-4">
                     <img class="col-2" src="img/Logo.png" alt="Avesso">
                     <hr class="col-9 m-auto mt-4 mb-4">
-                    <h2 class="size-20 text-primary">Seja bem vindo(a) ao Avesso!</h2>
+                    <h2 class="size-20 text-primary">Tenha conversas divertidas!</h2>
                     <p class="size-16">
-                        Conheça novas pessoas e descubra quem está por trás da tela. Não julgue um
-                        livro pela capa!
+                    Cada interação é a chance de boas risadas. Lembre-se de sempre manter o respeito com os outros!
                     </p>
-                    <img class="col-4" src="img/Characters.png" alt="Avesso">
+                    <img class="col-4" src="img/Characters2.png" alt="Avesso">
                     
                 </div>
             </div>
             <div class="border-light border-top border-3 p-4 container d-flex align-items-center justify-content-center">
-                <a class="text-primary" href="welcome2.php">Próximo <i class="bi bi-arrow-right"></i></a>
+                <a class="text-primary" href="create-profile1.php">Entendido <i class="bi bi-check-lg"></i></a>
             </div>
 
         </div>

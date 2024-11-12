@@ -33,13 +33,13 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"]) && isset($_PO
         
 
 
-        header('Location: login.php');
+        header('Location: welcome.php');
 
 
     } else {
         $msg_error = "<div class='alert alert-danger mt-3'>
-                            <p>Usuário ja existente.</p>
-                            </div>
+                        <p>Usuário ja existente.</p>
+                    </div>
             ";
     }
 }
