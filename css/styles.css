@@ -301,7 +301,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     
 }
 
-
+.round-image {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 125px;
+    -webkit-border-radius: 125px;
+    -moz-border-radius: 125px;
+    border: 10px;
+    border: solid;
+    border-color: #F82167;
+}
+.round-image-p {
+    width: 37px;
+    height: 37px;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 125px;
+    -webkit-border-radius: 125px;
+    -moz-border-radius: 125px;
+    border: 5px;
+    border: solid;
+    border-color: #F82167;
+    left: -6px;
+    position: relative;
+    margin-top: 7px;
+}
 @media (max-width: 768px) {
     .img-mobile-app-exemple {
         display:none ;

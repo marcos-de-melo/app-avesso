@@ -29,12 +29,7 @@ function activeLinkIcon($pageLinkActive)
         </div>
     </div>
     <ul class="sidebar-nav">
-        <li class="sidebar-item">
-            <a href="?page=search" class="sidebar-link <?= activeLink('search') ?>">
-                <img width="45px" src="./img/account.png" alt="">
-                <span>Perfil</span>
-            </a>
-        </li>
+
         <li class="sidebar-item">
             <a href="?page=home" class="sidebar-link <?= activeLink('home') ?>">
                 <i class="bi bi-house<?= activeLinkIcon('home') ?>"></i>
@@ -59,7 +54,12 @@ function activeLinkIcon($pageLinkActive)
                 <span>Pesquisar</span>
             </a>
         </li>
-
+        <li class="sidebar-item">
+            <a href="?page=search" class="sidebar-link <?= activeLink('search') ?>">
+            <div class="round-image-p" id="divfotoperfil" style="background-image: url(img/photos-profile-users/<?= $_SESSION["fotoPerfilUsuario"] ?>)"></div>
+                <span>Perfil</span>
+            </a>
+        </li>
 
         <!-- <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"

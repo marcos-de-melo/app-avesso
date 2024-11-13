@@ -63,14 +63,23 @@ $idUsuarioLogado = $dados["idUsuario"];
 
 
                 <?php
-                $sql = "select u.idUsuario, m.idUsuario, m.idUsuarioMatch, 
+                $sql = "select u.idUsuario, 
+m.idUsuario, 
+m.idUsuarioMatch, 
 (select nomeUsuario from tbusuarios where idUsuario = m.idUsuarioMatch ) as nomeUsuarioMatch,
+(select fotoPerfilUsuario from tbusuarios where idUsuario = m.idUsuarioMatch ) as fotoPerfilUsuarioMatch,
 (select count(idDestinatario) as qtNewMsg from tbmensagens where idDestinatario = u.idUsuario and idRemetente = m.idUsuarioMatch  and msgVisualizada = 0) as qtNewMsg
-from tbusuarios as u inner join tbmatches as m on u.idUsuario = m.idUsuario where u.idUsuario = " . $_SESSION["idUsuarioLogado"];
+from tbusuarios as u inner join tbmatches as m on u.idUsuario = m.idUsuario where u.idUsuario =" . $_SESSION["idUsuarioLogado"];
                 $rs = mysqli_query($conn, $sql);
                 while ($dados = mysqli_fetch_assoc($rs)) {
                     echo "<tr>
-                <td class='text-left'><img width='50px' src='img/account.png' alt=''></img></td>
+                <td class='text-left'>
+                
+                    <div class=\"round-image-p elevation-2 \" id=\"divfotoperfil\" style=\"background-image: url(img/photos-profile-users/". $dados["fotoPerfilUsuarioMatch"] .")\"></div>
+
+                    
+
+                </td>
                 <td>{$dados["nomeUsuarioMatch"]}</td>
                 <td><a href='?page=messages&idUsuarioMatch={$dados["idUsuarioMatch"]}'>Chat</a></td>
                 <td><a class='badge bg-danger rounded-circle' href='?page=messages&idUsuarioMatch={$dados["idUsuarioMatch"]}'>{$dados["qtNewMsg"]}</a></td>
@@ -85,7 +94,7 @@ from tbusuarios as u inner join tbmatches as m on u.idUsuario = m.idUsuario wher
     <div class="col-8">
         <header class="d-flex gap-3 align-items-center border-bottom border-light border-3 p-3">
             <img width="50px" src="img/account.png" alt="Amanda" class="rounded-circle">
-            <h2>Amanda</h2>
+            <h2><?php echo $_SESSION["nomeUsuario"]; ?></h2>
         </header>
         <div class="border-bottom border-light border-3">
             <section class="container-fluid">

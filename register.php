@@ -21,15 +21,16 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"]) && isset($_PO
 
     if ($linha == 0) {
 
+        
         $sql = "INSERT INTO tbusuarios (emailUsuario, senhaUsuario, nomeUsuario, dataNascUsuario, cidadeUsuario) 
         VALUES ('{$emailUsuario}', '{$senhaUsuario}', '{$nomeUsuario}', '{$dataNascUsuario}', '{$cidadeUsuario}')";
 
         $rs = mysqli_query($conn, $sql);
-
         session_start();
         $_SESSION["emailUsuario"] = $emailUsuario;
         $_SESSION["senhaUsuario"] = $senhaUsuario;
-        $_SESSION["nomeUsuario"] = $dados["nomeUsuario"];
+        $_SESSION["idUsuarioLogado"] = mysqli_insert_id($conn);
+        $_SESSION["nomeUsuario"] =  $nomeUsuario;
         
 
 

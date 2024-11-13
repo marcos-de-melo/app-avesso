@@ -76,13 +76,18 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
                     
                 </div>
             </div>
-            <div
-                class="border-light border-top border-3 p-4 container d-flex align-items-center justify-content-center">
-                <a class="text-primary" href="index.php">Finalizar <i class="bi bi-arrow-right"></i></a>
-            </div>
+
 
     </div>
     </div>
+    <footer class="fixed-bottom">
+        <div class="border-light border-top border-3 p-4 container d-flex align-items-between justify-content-between">
+            <a class="text-primary" href="create-profile3.php"><i class="bi bi-arrow-left"></i> Voltar</a>
+            <a id="btn-proximo" class="text-primary" href="create-profile2.php">
+                <?= $PularProximo ?> <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

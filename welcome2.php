@@ -1,11 +1,12 @@
 <?php
+session_start();
 // Conexão com o banco de dados
 include "./db/connection.php";
 // Verificação no banco de dados
 
 $msg_error = "";
 
-if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
+if (isset($_SESSION["emailUsuario"]) && isset($_SESSION["senhaUsuario"])) {
     $emailUsuario = mysqli_escape_string($conn, $_SESSION["emailUsuario"]);
     $senhaUsuario = $_SESSION["senhaUsuario"];
 
@@ -19,14 +20,11 @@ if (isset($_POST["emailUsuario"]) && isset($_POST["senhaUsuario"])) {
 
 
         header('Location: login.php');
+    } 
+}else {
 
+    header('Location: login.php');
 
-
-    } else {
-
-
-
-    }
 }
 ?>
 <!DOCTYPE html>

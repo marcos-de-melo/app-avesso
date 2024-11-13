@@ -14,7 +14,7 @@ if (isset( $_SESSION["emailUsuario"]) &&  isset($_SESSION["senhaUsuario"])) {
     $rs = mysqli_query($conn, $sql);
     $linha = mysqli_num_rows($rs);
     $dados = mysqli_fetch_assoc($rs);
-
+    $_SESSION["fotoPerfilUsuario"] = $dados["fotoPerfilUsuario"];
     if ($linha == 0) {
         
         unset($_SESSION["emailUsuario"]);

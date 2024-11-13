@@ -12,8 +12,9 @@ $(document).ready(function(){
     
     $("#btn-enviar-foto").on('click',function(event){
         event.preventDefault();
+       
         $("#form-upload-foto").ajaxForm({
-            url:'./paginas/contatos/upload/executa-upload.php',
+            url:'./upload/executa-upload.php',
             uploadProgress:function(event,position, total, precentComplete){
               preloader.show();
               barra.width(precentComplete + '%');  
@@ -26,7 +27,8 @@ $(document).ready(function(){
                 if(tipoMsg == "concluido"){
                     var caminho_foto = msg;
                     msg = "Upload da foto realizado com sucesso!";
-                    $("#foto-contato").attr("src",caminho_foto+"?timestamp="+ new Date().getTime());
+                    $("#btn-proximo").html("Próximo <i class='bi bi-arrow-right'></i>");
+                    $("#foto-usuario").attr("src",caminho_foto+"?timestamp="+ new Date().getTime());
                     mensagem.show().attr("class","mb-3 alert alert-success").html(msg);
                 }else if(tipoMsg == "aviso"){
                     mensagem.show().attr("class","mb-3 alert alert-warning").html(msg);
@@ -40,5 +42,6 @@ $(document).ready(function(){
                 console.log(data);
             }
         }).submit();
+
     })
 });
