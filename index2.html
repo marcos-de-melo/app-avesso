@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload de Múltiplas Imagens</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="images[]" id="images" multiple>
+        <button type="submit">Enviar Imagens</button>
+    </form>
+
+    <div id="imagePreview"></div>
+
+    <script>
+        // 2. Envio do formulário com jQuery AJAX
+        $('#uploadForm').on('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: 'upload.php', // Caminho do arquivo PHP que processará o upload
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $('#imagePreview').html(response); // Atualiza o preview com as imagens
+                    $('#images').val(''); // Limpa o campo de arquivos
+                }
+            });
+        });
+    </script>
+</body>
+</html>

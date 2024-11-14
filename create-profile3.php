@@ -5,17 +5,19 @@ $PularProximo = "Pular";
 include "./db/connection.php";
 // Verificação no banco de dados
 function insertHashtag($conn, $idUsuario, $tituloHashtag) {
-    $sql = "INSERT INTO tbhashtags (idUsuario, tituloHashtag) VALUES ( '{$_SESSION['idUsuarioLogado']}', '{$tituloHashtag}')";
+    $tituloHashtagValidado = str_replace(' ', '_',$_GET["tituloHashtag"]);
+    $sql = "INSERT INTO tbhashtags (idUsuario, tituloHashtag) VALUES ( '{$_SESSION['idUsuarioLogado']}', '{$tituloHashtagValidado}')";
 
     $rs = mysqli_query($conn, $sql);
 }
 function removeHashtag($conn, $idUsuario) {
-    $sql = "DELETE FROM tbhashtags WHERE idUsuario = '{$idUsuario}', tituloHashtag = '{$_GET["tituloHashtag"]}'";
+    $sql = "DELETE FROM tbhashtags WHERE idUsuario = '{$idUsuario}'and tituloHashtag = '{$_GET["tituloHashtag"]}'";
 
     $rs = mysqli_query($conn, $sql);
 }
 if(isset($_GET["tituloHashtag"])) {
-    $sql = "SELECT * FROM tbhashtags WHERE tituloHashtag = '{$_GET["tituloHashtag"]}', idUsuario = '{$_SESSION["idUsuarioLogado"]}'";
+    $tituloHashtagValidado = str_replace(' ', '_',$_GET["tituloHashtag"]);
+    $sql = "SELECT * FROM tbhashtags WHERE tituloHashtag = '{$tituloHashtagValidado}' and idUsuario = '{$_SESSION["idUsuarioLogado"]}'";
 
     $rs = mysqli_query($conn, $sql);
     $dados = mysqli_fetch_assoc($rs);
@@ -106,8 +108,14 @@ if (isset($_SESSION["emailUsuario"]) && isset($_SESSION["senhaUsuario"])) {
                 </p>
                 <p>
                 <?php
-                    $sql = "select * from tbhashtags";
+                    $sql = "select * from tbhashtags where idUsuario = '{$_SESSION["idUsuarioLogado"]}'";
                     $rs = mysqli_query($conn, $sql);
+                    $linhas = mysqli_num_rows($rs);
+                    if($linhas == 0){
+                        $PularProximo = "Pular";
+                    }else{
+                        $PularProximo = "Próximo";
+                    }
                     while ($dados = mysqli_fetch_assoc($rs)) {
                         $idHashtag = $dados["idHashtag"];
                         $tituloHashtag = $dados["tituloHashtag"];
@@ -153,7 +161,7 @@ if (isset($_SESSION["emailUsuario"]) && isset($_SESSION["senhaUsuario"])) {
     </div>
     <footer class="fixed-bottom">
         <div class="border-light border-top border-3 p-4 container d-flex align-items-between justify-content-between">
-            <a class="text-primary" href="create-profile1.php"><i class="bi bi-arrow-left"></i> Voltar</a>
+            <a class="text-primary" href="create-profile2.php"><i class="bi bi-arrow-left"></i> Voltar</a>
             <a id="btn-proximo" class="text-primary" href="create-profile4.php">
                 <?= $PularProximo ?> <i class="bi bi-arrow-right"></i>
             </a>
