@@ -5,7 +5,7 @@
         var formData = new FormData(this);
 
         $.ajax({
-            url: 'upload.php', // Caminho do arquivo PHP que processará o upload
+            url: 'upload/execulta-upload-lote.php', // Caminho do arquivo PHP que processará o upload
             type: 'POST',
             data: formData,
             contentType: false,

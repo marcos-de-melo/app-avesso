@@ -24,9 +24,9 @@ foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
     if (getimagesize($tmpName)) {
         if (move_uploaded_file($tmpName, $filePath)) {
             $response .= "<img src='$filePath' width='100' style='margin: 10px;'>";
-            $sql = "INSERT INTO tbfotos_usuarios (idUsuario, nomeArquivoFoto) VALUES ( '{$_SESSION['idUsuarioLogado']}', '{$nome_arquivo_novo}')";
+            $sql = "INSERT INTO tbfotos_usuarios (idUsuario, nomeArquivoFoto) VALUES ('{$_SESSION['idUsuarioLogado']}', '{$nome_arquivo_novo}')";
 
-            $rs = mysqli_query($conn, $sql);
+            mysqli_query($conn, $sql);
         } else {
             $response .= "<p>Erro ao enviar o arquivo $nome_arquivo_novo</p>";
         }
