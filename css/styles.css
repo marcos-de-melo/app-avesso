@@ -325,6 +325,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border: solid;
     border-color: #cfcccc;
 }
+.image-perfil-match {
+    
+    height:600px;
+    background-size: cover;
+    display: inline-block;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border: 10px;
+    border: solid;
+    border-color: #cfcccc;
+}
 .round-image-p {
     width: 37px;
     height: 37px;

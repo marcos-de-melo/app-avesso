@@ -5,12 +5,11 @@ date_default_timezone_set('America/Sao_Paulo');
 
 
 if (isset($_SESSION["emailUsuario"]) and isset($_SESSION["senhaUsuario"])) {
+
     $emailUsuario = $_SESSION["emailUsuario"];
     $senhaUsuario = $_SESSION["senhaUsuario"];
-    $_SESSION["idDestinatario"] = $_GET["idUsuarioMatch"];
 
 
-    $idDestinatario = $_GET["idUsuarioMatch"];
 
     $sql = "SELECT * FROM tbusuarios WHERE emailUsuario = '{$emailUsuario}' 
     and senhaUsuario = '{$senhaUsuario}'";
@@ -36,6 +35,7 @@ $idUsuarioLogado = $dados["idUsuario"];
 
 ?>
 <div class="row">
+
     <div class="col-4">
         <header class="d-flex gap-2 align-items-center border-bottom border-light border-3 pb-2">
             <h2>Mensagens</h2>
@@ -75,7 +75,7 @@ from tbusuarios as u inner join tbmatches as m on u.idUsuario = m.idUsuario wher
                     echo "<tr>
                 <td class='text-left'>
                 
-                    <div class=\"round-image-p elevation-2 \" id=\"divfotoperfil\" style=\"background-image: url(img/photos-profile-users/". $dados["fotoPerfilUsuarioMatch"] .")\"></div>
+                    <div class=\"round-image-p elevation-2 \" id=\"divfotoperfil\" style=\"background-image: url(img/photos-profile-users/" . $dados["fotoPerfilUsuarioMatch"] . ")\"></div>
 
                     
 
@@ -91,34 +91,46 @@ from tbusuarios as u inner join tbmatches as m on u.idUsuario = m.idUsuario wher
         </div>
 
     </div>
-    <div class="col-8">
-        <header class="d-flex gap-3 align-items-center border-bottom border-light border-3 p-3">
-            <img width="50px" src="img/account.png" alt="Amanda" class="rounded-circle">
-            <h2><?php echo $_SESSION["nomeUsuario"]; ?></h2>
-        </header>
-        <div class="border-bottom border-light border-3">
-            <section class="container-fluid">
-                <div id="box-msg" class="overflow-auto p-3 mb-3 border" style="max-height: calc(100vh - 300px);">
+    <?php
+    if (isset($_GET["idUsuarioMatch"])) {
+        $sql = "select * from tbusuarios where idUsuario = " . $_GET["idUsuarioMatch"];
+        $rs = mysqli_query($conn, $sql);
+        $dadosMatch = mysqli_fetch_assoc($rs);
+        $_SESSION["nomeUsuarioMatch"] = $dadosMatch["nomeUsuario"];
+        $idDestinatario = $_GET["idUsuarioMatch"];
+        $_SESSION["idDestinatario"] = $_GET["idUsuarioMatch"];
+        ?>
+        <div class="col-8">
+            <header class="d-flex gap-3 align-items-center border-bottom border-light border-3 p-3">
+                <img width="50px" src="img/photos-profile-users/<?php echo $dadosMatch["fotoPerfilUsuario"]; ?>" alt="<?php echo $dadosMatch["nomeUsuario"]; ?>" class="rounded-circle">
+                <h2><?php echo $_SESSION["nomeUsuarioMatch"]; ?></h2>
+            </header>
+            <div class="border-bottom border-light border-3">
+                <section class="container-fluid">
+                    <div id="box-msg" class="overflow-auto p-3 mb-3 border" style="max-height: calc(100vh - 300px);">
+
+                    </div>
+                </section>
+            </div>
+            <footer class="gap-3 p-4">
+                <div class="content">
+                    <form action="" method="post">
+                        <input type="hidden" id="idDestinatario" name="idDestinatario" value="<?= $idDestinatario ?>">
+                        <input type="hidden" id="idRemetente" name="idRemetente" value="<?= $idUsuarioLogado ?>">
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="txtMsg" name="txtMsg"> <button class="btn"
+                                id="btn-insert-msg" type="submit">
+                                <i class="bi bi-send-fill text-primary"></i>
+                            </button>
+                        </div>
+                    </form>
 
                 </div>
-            </section>
+            </footer>
         </div>
-        <footer class="gap-3 p-4">
-            <div class="content">
-                <form action="" method="post">
-                    <input type="hidden" id="idDestinatario" name="idDestinatario" value="<?= $idDestinatario ?>">
-                    <input type="hidden" id="idRemetente" name="idRemetente" value="<?= $idUsuarioLogado ?>">
-                    <div class="input-group">
-                        <input class="form-control" type="text" id="txtMsg" name="txtMsg"> <button class="btn"
-                            id="btn-insert-msg" type="submit">
-                            <i class="bi bi-send-fill text-primary"></i>
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </footer>
-    </div>
+        <?php
+    }
+    ?>
 </div>
 <script src="./js/jquery.js"></script>
 <script src="./js/box-mensagens.js"></script>
